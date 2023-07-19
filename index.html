@@ -1,0 +1,193 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Form</title>
+    <link href="public/style.css"  rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat&family=Tektur:wght@700&display=swap" rel="stylesheet">
+	
+  </head>
+  <body class="bod">
+    <!-- Body of Form starts -->
+	
+	<div class="home">
+		<header>
+			
+			<div class="logo">SHAURYA '23</div>
+
+			<nav class="nav-bar">
+				<ul>
+					<li><a href="" class="theme" onclick="c();return false;">☀ Light </a></li>
+					<li><a href="" class="active" onclick="b();return false;">Sign Up</a></li>
+				</ul>
+			</nav>
+		</header>
+	</div>
+	
+
+
+
+
+
+
+  	<div class="container">
+		
+      <form method="post" autocomplete="on" onsubmit="return handleSubmit(event);">
+        
+    		<div class="box">
+          <label for="firstName" class="fl fontLabel"> Name: </label>
+    			<div class="new iconBox">
+					<p style="font-size: 30px;">👤</p>
+          		</div>
+    			<div class="fr">
+    					<input type="text" name="firstName" minlength="5" placeholder="Name" onkeypress="return a(event);" class="textBox" id="name" autofocus="on" required>
+    			</div>
+    			<div class="clr"></div>
+    		</div>
+    		
+
+
+        
+    		<div class="box">
+          <label for="secondName" class="fl fontLabel">Select Sports : </label>
+    			<div class="fl iconBox"><p style="font-size: 30px;">🏆</p></div>
+    			<div class="fr3">
+    					
+                    <button class="dropbtn">Select</button>
+                    <div class="dropdown-content" >
+                        <input type="checkbox" name="Cricket" style="display: inline;"><p  style="display: inline;font-size: 15px;">&nbsp Cricket</p><br>
+                        <input type="checkbox" name="Football" style="display: inline;"><p  style="display: inline;font-size: 15px;">&nbsp Football </p><br>
+                        <input type="checkbox" name="Basketball" style="display: inline;"><p  style="display: inline;font-size: 15px;">&nbsp Basketball </p><br>
+                        <input type="checkbox" name="Athletics" style="display: inline;"><p  style="display: inline;font-size: 15px;">&nbsp Athletics</p><br>
+                        <input type="checkbox" name="Swimming" style="display: inline;"><p  style="display: inline;font-size: 15px;">&nbsp Swimming</p><br>
+
+                    </div>
+    			</div>
+    			<div class="clr"></div>
+    		</div>
+    		
+
+
+    		
+    		<div class="box">
+          <label for="phone" class="fl fontLabel"> Phone No.: </label>
+    			<div class="fl iconBox"><p style="font-size: 30px;">📞</p></div>
+    			<div class="fr">
+    					<input type="tel" required name="phoneNo" pattern="[1-9]{1}[0-9]{9}" placeholder="Phone No." class="textBox">
+    			</div>
+    			<div class="clr"></div>
+    		</div>
+    		
+
+
+    		
+    		<div class="box">
+          <label for="email" class="fl fontLabel"> Email ID: </label>
+    			<div class="fl iconBox"><p style="font-size: 30px;">📧</p></div>
+    			<div class="fr">
+    					<input type="email" required name="email" placeholder="Email Id" class="textBox">
+    			</div>
+    			<div class="clr"></div>
+    		</div>
+    		
+
+
+    		
+    		<div class="box">
+          <label for="password" class="fl fontLabel"> Password </label>
+    			<div class="fl iconBox"><p style="font-size: 30px;">🔒</p></div>
+    			<div class="fr">
+    					<input type="Password" required name="password" minlength="8"  placeholder="Password" class="textBox">
+    			</div>
+    			<div class="clr"></div>
+    		</div>
+    		
+
+    		
+    		<div class="box radio">
+          <label for="gender" class="fl fontLabel"> Gender: </label>
+    				<input type="radio" name="Gender" value="Male" required> Male &nbsp; &nbsp; &nbsp; &nbsp;
+    				<input type="radio" name="Gender" value="Female" required> Female
+    		</div>
+    		
+
+
+    		
+
+
+
+    		
+    		<div class="box" >
+				<button type="submit" class="submit" value="Submit" id="btn">Sign Up</button>
+    		</div>
+    		
+      </form>
+	  
+  </div>
+  
+  <script>
+	function a(event)
+	{
+		var char= event.which;
+		if((char<65 && char!=32)||(char>90 && char<97)||(char>122))
+		{
+			alert("please enter letters only");
+			return false;
+		}	
+	}
+	function b()
+	{
+		document.querySelector(".container").style.display="block";
+	}
+	function c()
+	{
+		document.querySelector("header").classList.toggle("headerdark");
+		document.querySelector(".logo").classList.toggle("logodark");
+		document.querySelector(".theme").classList.toggle("themedark");
+		document.querySelector(".active").classList.toggle("activedark");
+		document.querySelector(".container").classList.toggle("containerdark");
+		document.querySelector(".radio").classList.toggle("radiodark");
+		document.querySelector(".bod").classList.toggle("boddark");
+		var x=document.querySelector(".theme");
+		if(x.innerHTML=="☽ Dark")
+		{
+			x.innerHTML= "☀ Light"
+		}
+		else
+		{
+			x.innerHTML="☽ Dark";
+		}
+	}
+	
+    function handleSubmit(event) {
+        event.preventDefault(); 
+
+        
+        var firstName = document.getElementById("name").value;
+        var sports = [];
+        var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+        checkboxes.forEach(function (checkbox) {
+            sports.push(checkbox.name);
+        });
+        var phoneNo = document.getElementsByName("phoneNo")[0].value;
+        var email = document.getElementsByName("email")[0].value;
+        var password = document.getElementsByName("password")[0].value;
+        var gender = document.querySelector('input[name="Gender"]:checked').value;
+ 
+        var message = "Name: " + firstName + "\n";
+        message += "Sports: " + sports.join(", ") + "\n";
+        message += "Phone No.: " + phoneNo + "\n";
+        message += "Email ID: " + email + "\n";
+        message += "Password: " + password + "\n";
+        message += "Gender: " + gender;
+
+        alert(message);
+		console.log(message);
+        
+
+        return false; 
+    }
+	</script>
+  </body>
+</html>
